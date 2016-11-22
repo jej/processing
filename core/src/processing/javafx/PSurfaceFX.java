@@ -67,6 +67,7 @@ public class PSurfaceFX implements PSurface {
   PGraphicsFX2D fx;
   Stage stage;
   Canvas canvas;
+  static StackPane stackPane;
 
   final Animation animation;
   float frameRate = 60;
@@ -113,6 +114,9 @@ public class PSurfaceFX implements PSurface {
     return canvas;
   }
 
+  public StackPane getStackPane() {
+    return stackPane;
+  }
 
   class ResizableCanvas extends Canvas {
 
@@ -308,7 +312,7 @@ public class PSurfaceFX implements PSurface {
 
       Canvas canvas = surface.canvas;
       surface.fx.context = canvas.getGraphicsContext2D();
-      StackPane stackPane = new StackPane();
+      stackPane = new StackPane();
       stackPane.getChildren().add(canvas);
       canvas.widthProperty().bind(stackPane.widthProperty());
       canvas.heightProperty().bind(stackPane.heightProperty());
